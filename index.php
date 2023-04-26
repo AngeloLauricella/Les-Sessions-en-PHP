@@ -1,5 +1,25 @@
 <?php require 'inc/data/products.php'; ?>
 <?php require 'inc/head.php'; ?>
+
+
+<?php 
+
+if($_SERVER['REQUEST_METHOD']==='GET' && isset($_GET['add_to_cart']))
+{
+   if(array_key_exists($_GET['add_to_cart'], $_SESSION['cart']))
+   {
+    $_SESSION['cart'][$_GET['add_to_cart']]+= 1;
+   }
+   else
+   {
+     $_SESSION['cart'][$_GET['add_to_cart']]= 1;
+   }
+   
+}
+?>
+
+<?php var_dump($_SESSION['cart']);?>
+
 <section class="cookies container-fluid">
     <div class="row">
         <?php foreach ($catalog as $id => $cookie) { ?>
